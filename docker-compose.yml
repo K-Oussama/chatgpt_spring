@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      - DB_URL=jdbc:mysql://mysql:3306/chatgptapi
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: chatgptapi
